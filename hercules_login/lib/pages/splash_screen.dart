@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -14,12 +16,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  // ignore: prefer_final_fields
+  bool _isVisible = false;
   _SplashScreenState() {
     Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => const LoginPage()),
             (route) => false);
+      });
+    });
+
+    Timer(Duration(milliseconds: 10), () {
+      setState(() {
+        _isVisible = true;
       });
     });
   }
@@ -30,11 +40,11 @@ class _SplashScreenState extends State<SplashScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
           Theme.of(context).primaryColor,
-          Theme.of(context).primaryColor,
+          Theme.of(context).secondaryHeaderColor,
         ]),
       ),
-      child: const AnimatedOpacity(
-        opacity: 1.0,
+      child: AnimatedOpacity(
+        opacity: _isVisible ? 1.0 : 0,
         duration: Duration(milliseconds: 1200),
         child: Center(
           heightFactor: 140.0,
