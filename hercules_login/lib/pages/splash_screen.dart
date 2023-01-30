@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -16,10 +14,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // ignore: prefer_final_fields
   bool _isVisible = false;
   _SplashScreenState() {
-    Timer(const Duration(milliseconds: 2000), () {
+    new Timer(const Duration(milliseconds: 3000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -27,9 +24,10 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     });
 
-    Timer(Duration(milliseconds: 10), () {
+    new Timer(Duration(milliseconds: 10), () {
       setState(() {
-        _isVisible = true;
+        _isVisible =
+            true; // should be responsible for showing fade effect and navigating to login page
       });
     });
   }
@@ -37,23 +35,28 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Theme.of(context).primaryColor,
-          Theme.of(context).secondaryHeaderColor,
-        ]),
+      decoration: new BoxDecoration(
+        gradient: new LinearGradient(
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).secondaryHeaderColor
+          ],
+          begin: const FractionalOffset(0, 0),
+          end: const FractionalOffset(1.0, 0.0),
+          stops: [0.0, 1.0],
+          tileMode: TileMode.clamp,
+        ),
       ),
       child: AnimatedOpacity(
         opacity: _isVisible ? 1.0 : 0,
-        duration: Duration(milliseconds: 1200),
+        duration: Duration(milliseconds: 1000),
         child: Center(
           heightFactor: 140.0,
           widthFactor: 140.0,
           child: Center(
               child: Image(
-            image: NetworkImage(
-                'https://www.herculescarparking.com.au/wp-content/uploads/2019/04/hercules-logo-s.png'),
-            width: 350,
+            image: AssetImage('assets/images/logo.png'),
+            width: 500,
           )
               // child: Icon(
               //   Icons.widgets, //PUT YOUR LOGO HERE!!!!!!
@@ -64,4 +67,40 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
+
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     decoration: new BoxDecoration(
+  //       gradient: new LinearGradient(
+  //         colors: [
+  //           Theme.of(context).colorScheme.secondary,
+  //           Theme.of(context).primaryColor
+  //         ],
+  //         begin: const FractionalOffset(0, 0),
+  //         end: const FractionalOffset(1.0, 0.0),
+  //         stops: [0.0, 1.0],
+  //         tileMode: TileMode.clamp,
+  //       ),
+  //     ),
+  //     child: AnimatedOpacity(
+  //       opacity: _isVisible ? 1.0 : 0,
+  //       duration: Duration(milliseconds: 1200),
+  //       child: Center(
+  //         child: Container(
+  //           height: 140.0,
+  //           width: 140.0,
+  //           child: Center(
+  //             child: ClipOval(
+  //                 child: Image(
+  //               image: AssetImage('assets/images/logo.png'),
+  //               // width: 1200,
+  //               //height: 1200,
+  //             ) //put your logo here
+  //                 ),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
