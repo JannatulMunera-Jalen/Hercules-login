@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: const [
                   Text(
-                    'Hello',
+                    'LOGIN',
                     style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
                   )
                 ],
