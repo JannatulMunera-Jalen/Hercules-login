@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   onPressed: () {},
-                                  //after successful login, we will redirect to profile page
+                                  //after successful login, we will redirect to profile page (MAKE PROFILE PAGE)
                                 ),
                               ),
                               Container(
