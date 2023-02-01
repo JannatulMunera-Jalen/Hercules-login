@@ -12,6 +12,8 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final Key _formkey = GlobalKey<FormState>();
+  bool checkedValue = false;
+  bool checkboxValue = false;
   @override
   Widget build(BuildContext Context) {
     return Scaffold(
@@ -75,16 +77,98 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             decoration: ThemeHelper().textInputDecoration(
                                 'First Name', 'Enter your first Name'),
                           ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20.0,
                         ),
                         Container(
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 'Last Name', 'Enter your last Name'),
                           ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
+                        SizedBox(height: 30.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration(
+                                "E-mail address", "Enter your email"),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                      .hasMatch(val)) {
+                                return "Enter a valid email address";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Mobile Number", "Enter your mobile number"),
+                            keyboardType: TextInputType.phone,
+                            validator: (val) {
+                              if (!(val!.isEmpty) &&
+                                  !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                                return "Enter a valid phone number";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          child: TextFormField(
+                            obscureText: true,
+                            decoration: ThemeHelper().textInputDecoration(
+                                "Password*", "Enter your password"),
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Please enter your password";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 15.0),
+                        FormField<bool>(builder: (state) {
+                          return Column(children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Checkbox(
+                                    value: checkboxValue,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        checkboxValue = value!;
+                                        state.didChange(value);
+                                      });
+                                    }),
+                                Text(
+                                  "I accept all terms and conditions.",
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                state.errorText ?? '',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Theme.of(context).errorColor,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ]);
+                        }),
                       ],
                     ),
                   ),

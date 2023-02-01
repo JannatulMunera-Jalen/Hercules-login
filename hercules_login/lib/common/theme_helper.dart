@@ -3,9 +3,9 @@ import 'package:hexcolor/hexcolor.dart';
 
 class ThemeHelper {
   InputDecoration textInputDecoration(
-      [String labelText = "", String hintText = ""]) {
+      [String lableText = "", String hintText = ""]) {
     return InputDecoration(
-      labelText: labelText,
+      labelText: lableText,
       hintText: hintText,
       fillColor: Colors.white,
       filled: true,
@@ -23,6 +23,16 @@ class ThemeHelper {
           borderRadius: BorderRadius.circular(100.0),
           borderSide: BorderSide(color: Colors.red, width: 2.0)),
     );
+  }
+
+  BoxDecoration inputBoxDecorationShaddow() {
+    return BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.1),
+        blurRadius: 20,
+        offset: const Offset(0, 5),
+      )
+    ]);
   }
 
   BoxDecoration buttonBoxDecoration(BuildContext context,
@@ -64,6 +74,26 @@ class ThemeHelper {
       minimumSize: MaterialStateProperty.all(Size(50, 50)),
       backgroundColor: MaterialStateProperty.all(Colors.transparent),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
+    );
+  }
+
+  AlertDialog alartDialog(String title, String content, BuildContext context) {
+    return AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        TextButton(
+          child: Text(
+            "OK",
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.black38)),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
     );
   }
 }
