@@ -1,6 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hercules_login/common/theme_helper.dart';
+import 'package:hercules_login/pages/profile_page.dart';
 
+import 'registration_page.dart';
 import 'widgets/header_widget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -28,7 +31,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SafeArea(
               child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  padding: EdgeInsets.fromLTRB(
+                      20, 10, 20, 10), //change the location of the words.
                   margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   //this is the login form
                   child: Column(
@@ -79,20 +83,45 @@ class _LoginPageState extends State<LoginPage> {
                                           color: Colors.white),
                                     ),
                                   ),
-                                  onPressed: () {},
-                                  //after successful login, we will redirect to profile page (MAKE PROFILE PAGE)
+                                  onPressed: () {
+                                    //after successful login, we will redirect to profile page (MAKE PROFILE PAGE)
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProfilePage()));
+                                  },
                                 ),
                               ),
                               Container(
                                 margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                                child: Text(
-                                    "Don't have an account? Sign up here!"), //Now style the forms. creating a theme helper class...
+                                // child: Text(
+                                //     "Don't have an account? Sign up here!"), //Now style the forms. creating a theme helper class...
+                                child: Text.rich(TextSpan(children: [
+                                  TextSpan(text: "Don't have an account?"),
+                                  TextSpan(
+                                    text: " Sign up",
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (Context) =>
+                                                    RegistrationPage()));
+                                      },
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
+                                  ),
+                                ])),
                               ),
                             ],
                           )),
                     ],
                   )),
-            )
+            ),
           ],
         ),
       ),
