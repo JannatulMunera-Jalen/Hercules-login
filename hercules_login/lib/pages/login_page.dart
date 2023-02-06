@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hercules_login/common/theme_helper.dart';
 import 'package:hercules_login/pages/profile_page.dart';
 
+import 'forgot_password_page.dart';
 import 'registration_page.dart';
 import 'widgets/header_widget.dart';
 
@@ -65,7 +66,25 @@ class _LoginPageState extends State<LoginPage> {
                               Container(
                                 margin: EdgeInsets.fromLTRB(10, 0, 10, 20),
                                 alignment: Alignment.topRight,
-                                child: Text('Forgot your Password?'),
+                                // child: Text('Forgot your Password?'),
+                                child: Text.rich(TextSpan(children: [
+                                  TextSpan(
+                                    text: " Forgot Your Password?",
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (Context) =>
+                                                    ForgotPasswordPage()));
+                                      },
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary),
+                                  ),
+                                ])),
                               ),
                               Container(
                                 decoration:
