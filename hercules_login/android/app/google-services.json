@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "997767132967",
+    "firebase_url": "https://pace-dece0.firebaseio.com",
+    "project_id": "pace-dece0",
+    "storage_bucket": "pace-dece0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997767132967:android:f04d9aaeca3597ce219b02",
+        "android_client_info": {
+          "package_name": "com.example.hercules_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997767132967-h9kg6gmt1dc91phm3fkdvsn17ins135u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB45s37qiYCQwRuuQm1e0XHu1rH3d30G9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997767132967-adksvn48eo4u4kq548391ni63v58h5ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
