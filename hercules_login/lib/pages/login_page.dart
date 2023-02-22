@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hercules_login/common/theme_helper.dart';
 import 'package:hercules_login/pages/profile_page.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import 'forgot_password_page.dart';
 import 'registration_page.dart';
@@ -136,6 +138,94 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ])),
                               ),
+                              //HERE
+                              SizedBox(height: 30.0),
+                              Text(
+                                "Or log in using Social Media",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              SizedBox(height: 25.0),
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      child: FaIcon(
+                                        FontAwesomeIcons.googlePlus,
+                                        size: 35,
+                                        color: HexColor("#EC2D2F"),
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return ThemeHelper().alartDialog(
+                                                  "Google Plus",
+                                                  "SIKE!",
+                                                  context);
+                                            },
+                                          );
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: 30.0,
+                                    ),
+                                    GestureDetector(
+                                      child: Container(
+                                        padding: EdgeInsets.all(0),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          border: Border.all(
+                                              width: 5,
+                                              color: HexColor('#40ABF0')),
+                                          color: HexColor("#40ABF0"),
+                                        ),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.twitter,
+                                          size: 23,
+                                          color: HexColor("#FFFFFF"),
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return ThemeHelper().alartDialog(
+                                                  "Twitter",
+                                                  "You tap on Twitter social icon.",
+                                                  context);
+                                            },
+                                          );
+                                        });
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: 30.0,
+                                    ),
+                                    GestureDetector(
+                                      child: FaIcon(
+                                        FontAwesomeIcons.facebook,
+                                        size: 35,
+                                        color: HexColor("#3E529C"),
+                                      ),
+                                      onTap: () {
+                                        setState(() {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return ThemeHelper().alartDialog(
+                                                  "Facebook",
+                                                  "You tap on Facebook social icon.",
+                                                  context);
+                                            },
+                                          );
+                                        });
+                                      },
+                                    ),
+                                  ]),
                             ],
                           )),
                     ],
