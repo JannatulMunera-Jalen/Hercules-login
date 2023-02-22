@@ -31,9 +31,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
   firebase_core: ^2.4.1
   firebase_database: ^10.0.9
   
+=======
+>>>>>>> parent of 20fb454 (trying to use firebase)
 
 
   # The following adds the Cupertino Icons font to your application.
