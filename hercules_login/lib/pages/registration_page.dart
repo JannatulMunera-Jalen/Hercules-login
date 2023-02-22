@@ -115,8 +115,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration(
-                                'First Name', 'Enter your first Name'),
+                            decoration: ThemeHelper()
+                                .textInputDecoration('First Name', 'John'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -125,8 +125,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                         Container(
                           child: TextFormField(
-                            decoration: ThemeHelper().textInputDecoration(
-                                'Last Name', 'Enter your last Name'),
+                            decoration: ThemeHelper()
+                                .textInputDecoration('Last Name', 'Smith'),
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
@@ -134,7 +134,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         Container(
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
-                                "E-mail address", "Enter your email"),
+                                "E-mail address", "john.smith@hercules.com"),
                             keyboardType: TextInputType.emailAddress,
                             validator: (val) {
                               if (!(val!.isEmpty) &&

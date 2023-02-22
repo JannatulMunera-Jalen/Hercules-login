@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text.rich(TextSpan(children: [
                                   TextSpan(text: "Don't have an account?"),
                                   TextSpan(
-                                    text: " Sign up",
+                                    text: " Sign up Meow!",
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         Navigator.push(
